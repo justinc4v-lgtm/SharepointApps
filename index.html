@@ -2,27 +2,32 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>IMIS Group SharePoint Search</title>
+    <title>IMIS SharePoint Search</title>
   </head>
   <body style="font-family:Segoe UI, sans-serif;">
-    <form
-      action="https://imisgroup.sharepoint.com/search/Pages/results.aspx"
-      method="get"
-      target="_blank"
-    >
+    <div>
       <input
         type="text"
-        name="k"
+        id="imisSearch"
         placeholder="Search IMIS SharePoint..."
         style="width: 300px; padding: 8px; font-size: 16px;"
-        required
       />
       <button
-        type="submit"
+        onclick="openSearch()"
         style="padding: 8px 16px; font-size: 16px;"
       >
         Search
       </button>
-    </form>
+    </div>
+
+    <script>
+      function openSearch() {
+        const query = document.getElementById("imisSearch").value;
+        if (query) {
+          const url = "https://imisgroup.sharepoint.com/search/Pages/results.aspx?k=" + encodeURIComponent(query);
+          window.open(url, "_blank");
+        }
+      }
+    </script>
   </body>
 </html>
